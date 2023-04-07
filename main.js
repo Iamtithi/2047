@@ -94,7 +94,8 @@ function movePaddle(){
 
     //Surrounding wall detection
     //To the right side
-    
+    document.addEventListener('keydown', keyDown);
+    document.addEventListener('keyup', keyUp);
 
     //Surrounding wall detection
     //To the left side
@@ -106,6 +107,11 @@ function movePaddle(){
     {
         ball.dy=ball.dy*(-1);
     }
+        document.addEventListener('keydown', keyDown);
+        document.addEventListener('keyup', keyUp);
+    
+    
+
     
 }
 
@@ -113,6 +119,15 @@ function movePaddle(){
 function moveBall(){
     ball.x += ball.dx;
     ball.y += ball.dy;
+     if(ball.dx==paddle.x)
+     {
+      ball.x=ball.x*(-1);
+
+     }
+     if(ball.dy==paddle.y)
+     {
+        ball.y=ball.y*(-1);
+     }
 
     //Surrounding wall collision detection(x-axis)
     //right and left walls
@@ -133,6 +148,7 @@ function moveBall(){
             }
         });
     });
+    
 
     //Lose on missing paddle
     if(ball.y + ball.size > canvas.height){
@@ -203,7 +219,10 @@ function keyDown(e){
 
     } else if(e.key === 'Left' || e.key === 'ArrowLeft'){
 
-    } 
+    }
+   // document.addEventListener('keydown', keyDown);
+   // document.addEventListener('keyup', keyUp);
+
 }
 
 //Keyup event function
@@ -215,8 +234,8 @@ function keyUp(e){
 }
 
 //Keyboard event handlers
-document.addEventListener('keydown', keyDown);
-document.addEventListener('keyup', keyUp);
+//document.addEventListener('keydown', keyDown);
+//document.addEventListener('keyup', keyUp);
 
 
 
