@@ -98,6 +98,14 @@ function movePaddle(){
 
     //Surrounding wall detection
     //To the left side
+    if(canvas.width<=ball.x || ball.x<0)
+    {
+        ball.dx=ball.dx*(-1);
+    }
+    if(canvas.height<=ball.y || ball.y<0)
+    {
+        ball.dy=ball.dy*(-1);
+    }
     
 }
 
@@ -176,7 +184,10 @@ function update(){
     draw();
 
     screen = requestAnimationFrame(update);
+    
     if (score == (blockColumnCount*blockRowCount)) {
+      let a="you won";
+      console.log(a);
         
     }else if(isGameOver){
         
